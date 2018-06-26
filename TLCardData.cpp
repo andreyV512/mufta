@@ -263,9 +263,12 @@ vector<double> TLCardData::GetBarkValues(vector<int> &_Thresholds)
 	for(int i = 0; i < _Thresholds.size(); i++)
 	{
 		int x = _Thresholds[i] * Period / 100;
+		if(x > 0)
+		{
 		if (x >= vecMeasuresData[freqNum].vecSensorsData[0].size())
 			x = vecMeasuresData[freqNum].vecSensorsData[0].size()-1;
 		BarkValues.push_back(vecMeasuresData[freqNum].vecSensorsData[0][x]);
+		}
 	}
 	return BarkValues;
 }

@@ -3,11 +3,8 @@
 #include <vector>
 // #include <IniFiles.hpp>
 //------------------
-#ifndef TVIRTLCARD791
+//#ifndef TVIRTLCARD791
  #include "TLCard791.h"
-#else
- #include "TVirtLCard791.h"
-#endif
 //---------------------
 #include "TLogCh791Params.h"
 #include "TMeasuresData.h"
@@ -30,7 +27,6 @@ private:
 
 
 	TLCard791* dtLcard791;
-	//TVirtualLCard791* dtLcard791;
 	// Время сбора по одной частоте
 	double BufTime;
 	//Массив коэффициентов усиления. Не используется больше

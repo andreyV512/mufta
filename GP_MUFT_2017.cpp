@@ -17,10 +17,10 @@ USEFORM("CardsFiles\A1730\uFRSigPanel.cpp", FRSigPanel); /* TFrame: File Type */
 USEFORM("CardsFiles\A1730\uFSignalsState.cpp", FSignalsState);
 USEFORM("ADCSettings.cpp", ADCSettForm);
 USEFORM("ABOUT_NTC_NK_URAN.cpp", fmAboutBox);
-USEFORM("Main.cpp", MainForm);
+USEFORM("ColorSettings.cpp", FormColor);
 USEFORM("SGSettings.cpp", SGSettForm);
 USEFORM("NewSG.cpp", NewSGForm);
-USEFORM("ColorSettings.cpp", FormColor);
+USEFORM("Main.cpp", MainForm);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {

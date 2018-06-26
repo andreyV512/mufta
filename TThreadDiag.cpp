@@ -21,7 +21,6 @@
 // Form1->Caption = "Updated in a thread";
 // }
 // ---------------------------------------------------------------------------
-#ifndef TVIRTLCARD791
 
 __fastcall TThDiag::TThDiag(bool CreateSuspended, TChart *_chartGPSF052,
 	TLCard791* _thLÑard791, TGSPF052* _Gen, int _chCount, int _timeGen)
@@ -43,30 +42,7 @@ __fastcall TThDiag::TThDiag(bool CreateSuspended, TChart *_chartGPSF052,
 		vecMeasure.push_back(sensorData);
 	}
 }
-#else
 
-__fastcall TThDiag::TThDiag(bool CreateSuspended, TChart *_chartGPSF052,
-	TVirtualLCard791* _thLÑard791, TGSPF052* _Gen, int _chCount, int _timeGen)
-	: TThread(CreateSuspended) {
-	stopThread = false;
-	thChartGPSF052 = _chartGPSF052;
-	thLÑard791 = _thLÑard791;
-	thGen = _Gen;
-	chCount = _chCount;
-	timeGen = _timeGen;
-	countMeasure = 0;
-	//îäèí äëÿ îñåâîé ëèíèè çàğåçåğâèğóåì
-	vecMeasure.reserve(_chCount+1);
-	for (int i = 0; i < chCount+1; i++) {
-		int szSensor=_timeGen*1000*thLÑard791->frequencyPerChannel_Hz;
-		double* sensorData = new double[szSensor];
-		for (int d = 0; d < szSensor; d++) {
-			sensorData[d] = 0;
-		}
-		vecMeasure.push_back(sensorData);
-	}
-}
-#endif
 
 // ---------------------------------------------------------------------------
 void __fastcall TThDiag::Execute() {

@@ -20,11 +20,9 @@
 #include <Registry.hpp>
 #include "uCRListT.h"
 //------------------
-#ifndef TVIRTLCARD791
+
  #include "TLCard791.h"
-#else
- #include "TVirtLCard791.h"
-#endif
+
 //---------------------
 //#include "RLCard_parameters.h"
 
@@ -64,14 +62,9 @@ private:
 	// User declarations
 	//ôðåéìû ïàðàìåòðîâ
 	CRListT<TFRSensor> listSens;
-#ifndef TVIRTLCARD791
+
 	TLCard791 *sLÑard791;
-#else
-	TVirtualLCard791 *sLÑard791;
-#endif
-	//int LinearItemIndex;
-	//int CrossItemIndex;
-	//TIniFile *ini;
+
 
 	void block();
 
@@ -81,11 +74,9 @@ private:
 	//RLCard_parameters* Par;
 
 public: // User declarations
-#ifndef TVIRTLCARD791
+
 	__fastcall TADCSettForm(TComponent* Owner,TLCard791 *_lÑard791);
-#else
-	__fastcall TADCSettForm(TComponent* Owner,TVirtualLCard791 *_lÑard791);
-#endif
+
 	bool need_redraw;
 
 };

@@ -145,25 +145,22 @@ object MainForm: TMainForm
       Left = 1
       Top = 1
       Width = 16
-      Height = 14
+      Height = 13
       Align = alLeft
       Alignment = taCenter
       Caption = 'Min'
       Transparent = True
       Visible = False
-      ExplicitHeight = 13
     end
     object lMaxScrollbar: TLabel
       Left = 955
       Top = 1
       Width = 20
-      Height = 14
+      Height = 13
       Align = alRight
       Alignment = taCenter
       Caption = 'Max'
       Visible = False
-      ExplicitLeft = 848
-      ExplicitHeight = 13
     end
     object scbChartDragger: TScrollBar
       Left = 17
@@ -430,7 +427,7 @@ object MainForm: TMainForm
     Left = 464
     Top = 176
     Bitmap = {
-      494C010103000500F40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500F80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000008686860086868600868686008686
       8600868686008686860086868600868686008686860086868600FFFFFF00C0C0

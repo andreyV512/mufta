@@ -15,7 +15,7 @@
 TLCardData* lCardData = NULL;
 
 // ---------------------------------------------------------------------------
-#ifndef TVIRTLCARD791
+
 TLCardData::TLCardData(TLCard791* _lcard791,int _countFrequencies, int _chLogCount)
 {
 	dtLcard791=_lcard791;
@@ -30,20 +30,6 @@ TLCardData::TLCardData(TLCard791* _lcard791,int _countFrequencies, int _chLogCou
 	LoadSettings();
 	freqNum = 0;
 }
-#else
-TLCardData::TLCardData(TVirtualLCard791* _lcard791,int _countFrequencies, int _chLogCount)
-{
-	dtLcard791=_lcard791;
-	countMeasures = _countFrequencies;
-	vecMeasuresData.reserve(_countFrequencies);
-	for (int i = 0; i < _countMeasures; i++) {
-		TMeasuresData* mData = new TMeasuresData(_chLogCount);
-		vecMeasuresData.push_back(*mData);
-		delete mData;
-	}
-	LoadSettings();
-}
-#endif
 
 // ---------------------------------------------------------------------------
 TLCardData::~TLCardData(void) {

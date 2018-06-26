@@ -18,6 +18,7 @@
 #include "ADCSettings.h"
 #include "SGSettings.h"
 #include "EtalonDatas.h"
+#include "DebugMess.h"
 // -----------------------------------
 #ifdef BERLIN_10
 //
@@ -35,6 +36,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner) : TForm(Owner) {
 
 // ---------------------------------------------------------------------------
 void __fastcall TMainForm::FormCreate(TObject *Sender) {
+	dprint("Ok debug panel\n");
 	AnsiString applPath = ExtractFilePath(Application->ExeName);
 	mainGlobalSettings.applPath = applPath;
 	applPath += "connectSQL.udl";
@@ -49,11 +51,8 @@ void __fastcall TMainForm::FormCreate(TObject *Sender) {
 	else {
 		//
 	}
-#ifndef TVIRTLCARD791
 	l—ard791 = new TLCard791(&mainGlobalSettings, codeERR);
-#else
-	l—ard791 = new TVirtualLCard791(&mainGlobalSettings, codeERR);
-#endif
+
 	if (codeERR < 0) {
 		Application->Terminate();
 	}

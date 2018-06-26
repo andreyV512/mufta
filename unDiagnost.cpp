@@ -15,7 +15,7 @@
 TfmDiagnost *fmDiagnost;
 
 // ---------------------------------------------------------------------------
-#ifndef TVIRTLCARD791
+
 
 __fastcall TfmDiagnost::TfmDiagnost(TComponent* Owner,
 	TGlobalSettings* _pGlobalSettings, TLCard791 *_LÑard791,
@@ -36,26 +36,7 @@ __fastcall TfmDiagnost::TfmDiagnost(TComponent* Owner,
 	colorSer[5] = clWhite;
 	colorSer[6] = clBlack;
 }
-#else
 
-__fastcall TfmDiagnost::TfmDiagnost(TComponent* Owner,
-	TGlobalSettings* _globalSettings, TVirtualLCard791 *_LÑard791)
-	: TForm(Owner) {
-	dGlobalSettings = _globalSettings;
-	diagLÑard791 = _LÑard791;
-	err = -101;
-	chCount = diagLÑard791->countLogCh;
-	genTime = 1; // ïåðåâåäåì â ñåêóíäû
-	chartLength = diagLÑard791->frequencyPerChannel_Hz * genTime;
-	colorSer[0] = clBlue;
-	colorSer[1] = clRed;
-	colorSer[2] = clGreen;
-	colorSer[3] = clFuchsia;
-	colorSer[4] = clYellow;
-	colorSer[5] = clWhite;
-	colorSer[6] = clBlack;
-}
-#endif
 
 // ---------------------------------------------------------------------------
 void __fastcall TfmDiagnost::btnStartGenClick(TObject *Sender) {

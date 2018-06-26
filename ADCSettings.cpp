@@ -17,21 +17,14 @@
 TADCSettForm *ADCSettForm;
 
  //---------------------------------------------------------------------------
-#ifndef TVIRTLCARD791
+
 __fastcall TADCSettForm::TADCSettForm(TComponent* Owner,TLCard791 *_lÑard791) : TForm(Owner)
 {
 	//ini=_ini;
 	sLÑard791=_lÑard791;
 	KeyPreview = true;
 }
-#else
-__fastcall TADCSettForm::TADCSettForm(TComponent* Owner,TVirtualLCard791 *_lÑard791) : TForm(Owner)
-{
-	//ini=_ini;
-	sLÑard791=_lÑard791;
-	KeyPreview = true;
-}
-#endif
+
 // ---------------------------------------------------------------------------
 void __fastcall TADCSettForm::FormCreate(TObject *Sender)
 {

@@ -33,8 +33,8 @@
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<OutputExt>exe</OutputExt>
 			<LinkPackageStatics>rtl.lib;vcl.lib;Tee.lib;vclimg.lib;dbrtl.lib;adortl.lib;vcldb.lib;bcbsmp.lib;vclx.lib</LinkPackageStatics>
-			<IncludePath>From_Buran5033\;CardsFiles\From_Buran5033\;CardsFiles\X502Card\;CardsFiles\RudShell\;SolidGroup\;CardsFiles\A1730\;$(IncludePath)</IncludePath>
-			<ILINK_LibraryPath>From_Buran5033\;CardsFiles\From_Buran5033\;CardsFiles\X502Card\;CardsFiles\RudShell\;SolidGroup\;CardsFiles\A1730\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<IncludePath>CardsFiles\inc\;tools_debug\;From_Buran5033\;CardsFiles\From_Buran5033\;CardsFiles\X502Card\;CardsFiles\RudShell\;SolidGroup\;CardsFiles\A1730\;$(IncludePath)</IncludePath>
+			<ILINK_LibraryPath>CardsFiles\inc\;tools_debug\;From_Buran5033\;CardsFiles\From_Buran5033\;CardsFiles\X502Card\;CardsFiles\RudShell\;SolidGroup\;CardsFiles\A1730\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
 			<UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
 			<DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
 			<AllPackageLibs>rtl.lib;vcl.lib;Tee.lib;vclimg.lib;dbrtl.lib;adortl.lib;vcldb.lib;bcbsmp.lib;vclx.lib</AllPackageLibs>
@@ -78,6 +78,7 @@
 			<ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+			<BCC_Defines>TVIRTLCARD791;$(BCC_Defines)</BCC_Defines>
 			<IncludePath>DSPFilters\include;$(IncludePath)</IncludePath>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -136,6 +137,9 @@
 				<DependentOn>CardsFiles\A1730\uFSignalsState.h</DependentOn>
 				<BuildOrder>38</BuildOrder>
 			</CppCompile>
+			<None Include="CardsFiles\inc\bdaqctrl.h">
+				<BuildOrder>58</BuildOrder>
+			</None>
 			<None Include="CardsFiles\RudShell\IRshDevice.h">
 				<BuildOrder>21</BuildOrder>
 			</None>
@@ -250,6 +254,9 @@
 				<DependentOn>TMeasuresData.h</DependentOn>
 				<BuildOrder>48</BuildOrder>
 			</CppCompile>
+			<CppCompile Include="tools_debug\DebugMess.cpp">
+				<BuildOrder>57</BuildOrder>
+			</CppCompile>
 			<CppCompile Include="TProtocol.cpp">
 				<DependentOn>TProtocol.h</DependentOn>
 				<BuildOrder>10</BuildOrder>
@@ -257,10 +264,6 @@
 			<CppCompile Include="TThreadDiag.cpp">
 				<DependentOn>TThreadDiag.h</DependentOn>
 				<BuildOrder>48</BuildOrder>
-			</CppCompile>
-			<CppCompile Include="TVirtLCard791.cpp">
-				<DependentOn>TVirtLCard791.h</DependentOn>
-				<BuildOrder>49</BuildOrder>
 			</CppCompile>
 			<CppCompile Include="TypeSizeFrequencies.cpp">
 				<DependentOn>TypeSizeFrequencies.h</DependentOn>
@@ -342,10 +345,10 @@
 			<FormResources Include="CardsFiles\A1730\uFSignalsState.dfm"/>
 			<FormResources Include="ADCSettings.dfm"/>
 			<FormResources Include="ABOUT_NTC_NK_URAN.dfm"/>
-			<FormResources Include="Main.dfm"/>
+			<FormResources Include="ColorSettings.dfm"/>
 			<FormResources Include="SGSettings.dfm"/>
 			<FormResources Include="NewSG.dfm"/>
-			<FormResources Include="ColorSettings.dfm"/>
+			<FormResources Include="Main.dfm"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

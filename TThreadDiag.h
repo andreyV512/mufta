@@ -23,11 +23,9 @@
 #include <ctime.h>
 #include <vector>
 //------------------
-#ifndef TVIRTLCARD791
+
  #include "TLCardData.h"
-#else
- #include "TVirtLCard791.h"
-#endif
+
 //---------------------
 #include "SignalListDef.h"
 //---------------------
@@ -37,11 +35,9 @@ class TThDiag : public TThread
 {
 private:
  TChart *thChartGPSF052;
-#ifndef TVIRTLCARD791
+
  TLCard791* thLСard791;
-#else
- TVirtualLCard791* thLСard791;
-#endif
+
  TGSPF052* thGen;
  double Y0,Y1,Y3,Y5;
  unsigned int startTime;// начальное время
@@ -53,11 +49,9 @@ protected:
 	void __fastcall Execute();
 	void __fastcall UpdateChart();
 public:
-#ifndef TVIRTLCARD791
+
 	__fastcall TThDiag(bool CreateSuspended,TChart *_chartGPSF052,TLCard791* _thLСard791,TGSPF052* _Gen,int _chCount,int _timeGen);
-#else
-	__fastcall TThDiag(bool CreateSuspended,TChart *_chartGPSF052,TVirtualLCard791* _thLСard791,TGSPF052* _Gen,int _chCount,int _timeGen);
-#endif
+
 	__fastcall ~TThDiag(void);
 	bool stopThread;
 	//количество измерений

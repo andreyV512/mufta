@@ -49,11 +49,8 @@
   #include <IOUtils.hpp>
 #endif
 //------------------
-#ifndef TVIRTLCARD791
+
  #include "TLCard791.h"
-#else
- #include "TVirtLCard791.h"
-#endif
 //---------------------
 #include "TThreadDiag.h"
 #include "SignalList.h"
@@ -106,11 +103,7 @@ private: // User declarations
 	TColor colorSer[7];//={clBlue,clRed,clGreen,clFuchsia,clYellow,clWhite,clBlack};
 	void __fastcall UserWndProc(Messages::TMessage &_msg);
 		// LCard791 - указатель на карту
-#ifndef TVIRTLCARD791
 	TLCard791* diagLСard791;
-#else
-	TVirtualLCard791* diagLСard791;
-#endif
 	//данные с платы
 	TLCardData* lCardData;
 	//код ошибки
@@ -139,11 +132,9 @@ private: // User declarations
 	 //результат ГП
 	 CSG csg;
 public: // User declarations
-#ifndef TVIRTLCARD791
+
 	__fastcall TfmDiagnost(TComponent* Owner,TGlobalSettings* _pGlobalSettings,TLCard791* _LСard791,TLCardData* _lCardData);
-#else
-	__fastcall TfmDiagnost(TComponent* Owner,TGlobalSettings* _pGlobalSettings,TVirtualLCard791* _LСard791);
-#endif
+
 };
 
 // ---------------------------------------------------------------------------

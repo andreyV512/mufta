@@ -72,6 +72,10 @@ object ADCSettForm: TADCSettForm
     TabOrder = 1
     object ppPage: TTabSheet
       Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080' '#1082#1086#1085#1090#1088#1086#1083#1103
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object gbSG: TGroupBox
         Left = 5
         Top = 2

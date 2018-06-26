@@ -75,6 +75,7 @@ TLCard791::TLCard791(TGlobalSettings* _mainGlobalSettings, int &_codeErr) {
 
 		lastError = "";
 		t_stop_event = CreateEvent(0, true, false, 0);
+#ifndef TVIRTLCARD791
 		hComponent = LoadLibrary(L"lcomp.dll");
 		if (hComponent == NULL) {
 			_codeErr = -1;
@@ -181,6 +182,7 @@ TLCard791::TLCard791(TGlobalSettings* _mainGlobalSettings, int &_codeErr) {
 		// --------- припишем настройки в плату
 		LoadAndSetSettings(vecLogChannels);
 		// -----------
+#endif   //TVIRTLCARD791
 	}
 	catch (Exception *ex) {
 		// TLog::ErrFullSaveLog(ex);
@@ -190,6 +192,7 @@ TLCard791::TLCard791(TGlobalSettings* _mainGlobalSettings, int &_codeErr) {
 
 // ---------------------------------------------------------------------------
 TLCard791::~TLCard791() {
+#ifndef TVIRTLCARD791
 	// Остановим плату
 	Stop();
 	// Закроем и освободим плату
@@ -202,6 +205,7 @@ TLCard791::~TLCard791() {
 	FreeLibrary(hComponent);
 	CloseHandle(t_stop_event);
 	delete data_buf;
+	#endif
 }
 
 // ---------------------------------------------------------------------------

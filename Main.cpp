@@ -52,13 +52,14 @@ void __fastcall TMainForm::FormCreate(TObject *Sender) {
 		//
 	}
 	lСard791 = new TLCard791(&mainGlobalSettings, codeERR);
-
+	/*
 	if (codeERR < 0) {
 		Application->Terminate();
 	}
 	else {
 		//
 	}
+	*/
 	TSFreqs = new TSFrequencies(mainGlobalSettings.indexCurrentTypeSize);
 	int freqCount = TSFreqs->Frequency.size();
 	lCardData = new TLCardData(lСard791, freqCount, lСard791->countLogCh); // todo Временно 1 частота
@@ -83,58 +84,7 @@ void __fastcall TMainForm::FormCreate(TObject *Sender) {
 	}
 	//выбор ГОСТа
 	cbSGGost->ItemIndex = mainGlobalSettings.indexCurrentSGGost;
-	// FSignalsState = new TFSignalsState(this, ini, SLD);
-	// if (ini->ReadBool("OtherSettings", "SignalsVisible", false))
-	// FSignalsState->Show();
-	//
-	// thresholdCount = ini->ReadInteger("default","ThresholdCount",8);
-	// eThresholds.resize(thresholdCount);
-	// lsThresholds.resize(thresholdCount);
-	// for (int i = 0; i < thresholdCount; i++)
-	// lsThresholds[i] = new TLineSeries(SignalChart);
-	// LoadFormPos(this, ini);
-	// sgc = new SGCoords(ini);
-	// for (int i = 0; i < thresholdCount; i++)
-	// {
-	// int left = 2;
-	// int width = pThresholds->Width - left * 2;
-	// int top = 10;
-	// int height = 21;
-	// eThresholds[i] = new TEdit(pThresholds);
-	// eThresholds[i]->Parent = pThresholds;
-	// eThresholds[i]->SetBounds(left, height*i + top, width, height);
-	// eThresholds[i]->Name = L"eThresholds" + IntToStr(i);
-	// eThresholds[i]->Clear();
-	// eThresholds[i]->OnExit = Edit1Exit;
-	// eThresholds[i]->Refresh();
-	// eThresholds[i]->Tag = i;
-	// }
-	// DragAcceptFiles(Handle, true); // Разрешаем перетаскивание файлов
-	//
-	// local_th = sgc->thresholds;
-	// for (int i = 0; i < thresholdCount; i++)
-	// eThresholds[i]->Text = String(local_th[i]);
-	// // создадим копию перед выводом в эдиты, для последующего сравнения
-	//
-	// StatusBar->Panels->Items[0]->Text = "";
-	// StatusBar->Panels->Items[1]->Text = "";
-	// SignalChart->BottomAxis->SetMinMax(0, 1000);
-	// SignalChart->UndoZoom();
-	// SeriesNetU->Clear();//NetU
-	// SeriesSignalSG->Clear();//SignalSG
-	// SeriesSynchroDetector->Clear();//SynchroDetector
-	// SeriesInductionSignal->Clear();//InductionSignal
-	// SeriesSynchroSignal->Clear();//SynchroSignal
-	// SeriesDotsNetU->Clear();//DotsNetU
-	// SeriesDotsSignalSG->Clear();//DotsSignalSG
-	// for (int i = 0; i < thresholdCount; i++)
-	// lsThresholds[i]->Clear();
-	// ChangeColor();
-	// scbChartDragger->Position = 1;
-	// curPos = 1;
-	// // SignalChart->SetFocus();
-
-	// PrepareFastLineChart(int _countSensors,  int _lengthChart,TChart* _chart)
+	
 	TExtFunction::PrepareChartToTst(SignalChart, 3, 600, 2000);
 	SignalChart->Series[0]->Title += " Баркгаузен";
 	SignalChart->Series[1]->Title += " Напряжение";

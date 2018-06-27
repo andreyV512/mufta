@@ -75,11 +75,7 @@
 #include "TypeSizeFrequencies.h"
 #include "TGSPF052.h"
 //-------------------
-#ifndef TVIRTLCARD791
  #include "TLCard791.h"
-#else
- #include "TVirtLCard791.h"
-#endif
 
 // ---------------------------------------------------------------------------
 class TMainForm : public TForm {

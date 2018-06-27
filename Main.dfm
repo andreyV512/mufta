@@ -35,7 +35,6 @@ object MainForm: TMainForm
       item
         Width = 250
       end>
-    ExplicitWidth = 869
   end
   object ToolBarTop: TToolBar
     Left = 0
@@ -46,7 +45,6 @@ object MainForm: TMainForm
     Caption = 'ToolBarTop'
     Images = ImageList1
     TabOrder = 1
-    ExplicitWidth = 869
     object cbTypeSize: TComboBox
       Left = 0
       Top = 0
@@ -131,7 +129,6 @@ object MainForm: TMainForm
     Align = alRight
     TabOrder = 2
     Visible = False
-    ExplicitLeft = 789
   end
   object BottomPanel: TPanel
     Left = 0
@@ -140,7 +137,6 @@ object MainForm: TMainForm
     Height = 16
     Align = alBottom
     TabOrder = 3
-    ExplicitWidth = 869
     object lMinScrollbar: TLabel
       Left = 1
       Top = 1
@@ -175,7 +171,6 @@ object MainForm: TMainForm
       TabOrder = 0
       Visible = False
       OnChange = scbChartDraggerChange
-      ExplicitWidth = 831
     end
   end
   object Panel1: TPanel
@@ -187,7 +182,6 @@ object MainForm: TMainForm
     BorderStyle = bsSingle
     Caption = 'Panel1'
     TabOrder = 5
-    ExplicitWidth = 869
     object SignalChart: TChart
       Left = 1
       Top = 1
@@ -206,7 +200,6 @@ object MainForm: TMainForm
       View3D = False
       Align = alTop
       TabOrder = 0
-      ExplicitWidth = 863
       PrintMargins = (
         15
         36
@@ -257,7 +250,6 @@ object MainForm: TMainForm
     BorderStyle = bsSingle
     Caption = 'Panel2'
     TabOrder = 6
-    ExplicitWidth = 869
     object EtalonChart: TChart
       Left = 1
       Top = 1
@@ -276,7 +268,6 @@ object MainForm: TMainForm
       View3D = False
       Align = alClient
       TabOrder = 0
-      ExplicitWidth = 863
       PrintMargins = (
         15
         36
@@ -427,7 +418,7 @@ object MainForm: TMainForm
     Left = 464
     Top = 176
     Bitmap = {
-      494C010103000500F80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500FC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000008686860086868600868686008686
       8600868686008686860086868600868686008686860086868600FFFFFF00C0C0

@@ -28,7 +28,18 @@
 
 #pragma resource "*.dfm"
 TMainForm *MainForm;
+#ifndef TVIRTLCARD791
+#define DEBUG_OK(n) n
+#else
+ #define DEBUG_OK(n) true
+#endif
 
+#ifndef TVIRTLCARD791
+ #define DEBUG_LEN(txt, o)
+ #else
+  #define DEBUG_LEN(txt, o)\
+  dprint("DEBUG_LEN %s %d\n", txt, o->vecMeasuresData[0].vecSensorsData[0].size())
+ #endif
 // ---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner) : TForm(Owner) {
 
@@ -275,6 +286,7 @@ void __fastcall TMainForm::ApplicationEventsMessage(tagMSG & Msg, bool &Handled)
 				break;
 			}
 			case ThreadWork::COMPUTE: {
+			DEBUG_LEN("32", lCardData);
 				AnsiString a = "Сообщение: расчет треда, код: ";
 				a += Msg.lParam;
 				TProtocol::ProtocolSave(a);
@@ -416,11 +428,14 @@ void __fastcall TMainForm::bCancelClick(TObject * Sender) {
 	Stop();
 }
 // ---------------------------------------------------------------------------
+
+
 void TMainForm::Start()
 {
 	int err=0;
 	try {
-		bool isControl = SLD->iCC->Get(); //проверяем цепи управления
+
+		bool isControl = DEBUG_OK(SLD->iCC->Get()); //проверяем цепи управления
 		if (isControl) {
 			SetAbleButtons(false);
 			if (threadWork != NULL)
@@ -441,9 +456,11 @@ void TMainForm::Start()
 				delete threadWork;
 				threadWork = NULL;
 			}
+#ifndef TVIRTLCARD791
 			if (!gen) {
 				gen = new TGSPF052(&mainGlobalSettings, err);
 			}
+#endif
 			threadWork = new ThreadWork(true, lCardData, &mainGlobalSettings, gen);
 			SLD->SetAlarm(true);
 		}
@@ -521,7 +538,7 @@ void TMainForm::Redraw()
 //				->AddArray(arr, sz);
 //		}
 //	}
-
+    DEBUG_LEN("35", lCardData);
 	//обойдемся одной частотой
 	int chCount = lCardData->vecMeasuresData[0].vecSensorsData.size();
 	TExtFunction::PrepareChartToTst(SignalChart, chCount , 0, 0);
@@ -559,6 +576,7 @@ void TMainForm::Redraw()
 	queryEtalon->Close();
 	// посчитали знач порогов
 	vector<double> BarkValues;
+	DEBUG_LEN("40", lCardData);
 	BarkValues = lCardData->GetBarkValues(Thresholds);
 	//покажем контрольные точки
 	TFastLineSeries* series = new TFastLineSeries(SignalChart);

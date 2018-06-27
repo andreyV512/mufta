@@ -15,15 +15,22 @@
 #include "SignalListDef.h"
 #include "unSQLDbModule.h"
 #include "TypeSizeFrequencies.h"
+#include "unTUtils.h"
 // #include <boost\ratio\ratio.hpp>
 // #include <chrono.hpp>
+#include "DebugMess.h"
 // ---------------------------------------------------------------------------
 #ifdef BERLIN_10
 //
 #else
   #pragma package(smart_init)
 #endif
-
+ #ifndef TVIRTLCARD791
+ #define DEBUG_LEN(txt, o)
+ #else
+  #define DEBUG_LEN(txt, o)\
+  dprint("DEBUG_LEN %s %d\n", txt, o->vecMeasuresData[0].vecSensorsData[0].size())
+ #endif
 // ----конструктор - переносим внешние переменные на внутренние---------------
 __fastcall ThreadWork::ThreadWork(bool _createSuspended, TLCardData* _lCardData,TGlobalSettings* _globalSettings, TGSPF052* _gen)
 {
@@ -31,7 +38,14 @@ __fastcall ThreadWork::ThreadWork(bool _createSuspended, TLCardData* _lCardData,
 	lCardData = _lCardData;
 	int err=-101;
 	GSPF = _gen;//new TGSPF052(thGlobalSettings,err);
+#ifdef TVIRTLCARD791
+	TLog::Load3TxtVectDoubleFile(
+		"C:\\Users\\Andrey\\Desktop\\eclipce\\tmp\\SavedEtalons\\E_2018_03_26_12_12_07_55000_TS_73_SG_K_FHZ.csv"
+		, lCardData,0);
+	DEBUG_LEN("10", lCardData);
+#endif
 	solidGroup = new TSG(thGlobalSettings,lCardData);
+	DEBUG_LEN("20", lCardData);
 	Collect = true;
 	// ini = _ini;
 	// AnsiString sect = "Type_"; // + ini->ReadString("Default", "TypeSize", "1");
@@ -150,6 +164,12 @@ UnicodeString ThreadWork::PrepareForWork() {
 
 // -------------------------------------------------------------------------------
 // ----онлайн цикл, крутящийся бесконечно и проверяющий все события---------------
+#ifndef TVIRTLCARD791
+ #define DEBUG_LEN(txt, o)
+ #else
+  #define DEBUG_LEN(txt, o)\
+  dprint("DEBUG_LEN %s %d\n", txt, o->vecMeasuresData[0].vecSensorsData[0].size())
+ #endif
 bool ThreadWork::OnlineCycle() {
 	TProtocol::ProtocolSave("Работа: Режим работа");
 	bool result = true; // общий результат успешности цикла
@@ -170,6 +190,7 @@ bool ThreadWork::OnlineCycle() {
 		TProtocol::ProtocolSave(msg);
 		return false;
 	}
+#ifndef TVIRTLCARD791
 	timeFlag = CheckMufta(true,60000);
 	if (!timeFlag) // если превышено время ожидания, то выходим
 	{
@@ -184,12 +205,15 @@ bool ThreadWork::OnlineCycle() {
 		TProtocol::ProtocolSave(msg);
 		return false;
 	}
-	// gen = new TGSPF052(dGlobalSettings,err);
+#endif
+   DEBUG_LEN("30", lCardData);
 	if (solidGroup!=NULL)
 	{
 		delete solidGroup;
 	}
+#ifndef TVIRTLCARD791
 	lCardData->ClearSGM();
+#endif
 	TSFrequencies TSFreqs = TSFrequencies(thGlobalSettings->indexCurrentTypeSize);
 	if(TSFreqs.Frequency.size() <= 0)
 	{
@@ -197,13 +221,17 @@ bool ThreadWork::OnlineCycle() {
 		TExtFunction::ShowBigModalMessage("Работа: частот для этого типоразмера нет в базе данных",clBlue);
 		return false;
 	}
+	 DEBUG_LEN("100", lCardData);
 	solidGroup = new TSG(thGlobalSettings, lCardData);
+	 DEBUG_LEN("110", lCardData);
 	Sleep(1500); // задержка на поправку муфты
 	DWORD LastTime = GetTickCount();
 	SetStext2("Начинаем сбор");
 	Post(UPDATE_STATUS);
+	 DEBUG_LEN("120", lCardData);
 	// включаем питание датчика
 	SLD->oSENSORON->Set(true);
+#ifndef TVIRTLCARD791
 	// Включаем ГСПФ
 	GSPF->SetSampleFreq(thGlobalSettings->discrFrecGSPF);
 	GSPF->FormSignal(TSFreqs.Frequency[0],TSFreqs.Amplitude[0]);
@@ -218,7 +246,7 @@ bool ThreadWork::OnlineCycle() {
 	// Сбрасываем состояние ГП и останавливаем ГСПФ
 	solidGroup->ResetState();
 	GSPF->StopGSPF052();
-
+#endif
 	// выключаем питание датчика
 	SLD->oSENSORON->Set(false);
 	// SLD->oSENSLOWPOW->Set(false);

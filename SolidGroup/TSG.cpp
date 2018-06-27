@@ -51,18 +51,24 @@ void TSG::pr0(AnsiString _msg) {
 }
 
 // ---------------------------------------------------------------------------
+#ifndef TVIRTLCARD791
+#define DEBUG_SKIP(n)n
+#else
+#define DEBUG_SKIP(n)
+#endif
 int TSG::Exec(int _freqNum) {
 	freqNum = _freqNum;
 	switch (state) {
 	case 0:
 	{
 		startTime = GetTickCount();
-		sgLCardData->StartSGM(freqNum);
+		DEBUG_SKIP(sgLCardData->StartSGM(freqNum));
 		state = 1;
 		break;
 	}
 	case 1:
 	{
+#ifndef TVIRTLCARD791
 		if (!sgLCardData->Read(freqNum))
 			TExtFunction::FATAL("SG::Exec: не смогли прочитать плату lcard");
 //		int x = sgLCardData->GetBufTime()*1000;
@@ -70,6 +76,7 @@ int TSG::Exec(int _freqNum) {
 		if((GetTickCount()-startTime) < sgLCardData->GetBufTime()*1000)
 			break;
 		sgLCardData->StopSGM();
+#endif
 		state = 2;
 		break;
 	}

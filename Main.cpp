@@ -161,6 +161,7 @@ void TMainForm::LoadFromFile(UnicodeString FileName) {
 		TSG* solidGroup = new TSG(&mainGlobalSettings, lCardData);
 		csg = solidGroup->Get1FrecSG();
 		delete solidGroup;
+		solidGroup = NULL;
 		Redraw();
 	}
 	catch (Exception *ex) {

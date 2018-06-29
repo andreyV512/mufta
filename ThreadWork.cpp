@@ -210,6 +210,7 @@ bool ThreadWork::OnlineCycle() {
 	if (solidGroup!=NULL)
 	{
 		delete solidGroup;
+		solidGroup = NULL;
 	}
 #ifndef TVIRTLCARD791
 	lCardData->ClearSGM();
